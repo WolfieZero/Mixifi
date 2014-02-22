@@ -1,0 +1,23 @@
+{
+  "name": "Mixifi",
+  "version": "0.0.1",
+  "authors": [
+    "Neil Sweeney <neil@wolfiezero.com>"
+  ],
+  "description": "Work out the cost of your Spotify playlist in iTunes",
+  "license": "MIT",
+  "homepage": "http://mixifi.it/",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.2.13",
+    "bootstrap": "~3.1.1",
+    "angular-resource": "~1.2.13",
+    "angular-route": "~1.2.13"
+  }
+}

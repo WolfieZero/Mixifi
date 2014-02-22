@@ -1,0 +1,53 @@
+<!doctype html>
+<html ng-app="app">
+    <head>
+        <title>Mixifi</title>
+        <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css">
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+
+        <header>
+            <div class="container">
+                <h1 class="text-center">Mixifi.</h1>
+                <nav>
+                    <ul class="list-inline  text-center">
+                        <li><a href="/#/">Home</a></li>
+                        <li><a href="/#/about/">About</a></li>
+                        <li><a href="/#/spotify/">test.Spotify</a></li>
+                        <li><a href="/#/itunes/">test.ITunes</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <article>
+            <div class="container" ng-view></div>
+        </article>
+
+        <hr>
+
+        <footer>
+            <div class="container">
+                <p class="text-center">
+                    Mixifi Copyright 2014
+                </p>
+            </div>
+        </footer>
+
+
+        <!-- Vendor Files -->
+        <script src="/bower_components/angular/angular.js"></script>
+        <script src="/bower_components/angular-route/angular-route.js"></script>
+        <script src="/bower_components/angular-resource/angular-resource.js"></script>
+
+        <!-- App Files -->
+        <script src="app.js"></script>
+        <script src="controller/mixifi.js"></script>
+        <script src="service/iTunesAPI.js"></script>
+
+    </body>
+</html>
