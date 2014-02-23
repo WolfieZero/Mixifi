@@ -40,7 +40,7 @@ Mixifi.factory('iTunesAPI', function( $http ){ var
      *
      * @return  {null}
      */
-    _requestJSON = function( req ) {
+    _requestJSON = function( req, callback ) {
 
         var apiURL = _rootURL + '?' + req;
 
@@ -54,6 +54,9 @@ Mixifi.factory('iTunesAPI', function( $http ){ var
         })
             .success(function(data, status, headers) {
                 iTunesAPI.tracks.push( data.results[0] );
+                if( typeof callback === 'function' ) {
+                    callback( data );
+                }
             });
 
     },
@@ -68,12 +71,10 @@ Mixifi.factory('iTunesAPI', function( $http ){ var
 
         tracks: [],
 
-        artistTrack: function( artist, track ) {
+        artistTrack: function( artist, track, callback ) {
 
             var req = 'term=' + encodeURIComponent( artist + '-' + track );
-            _requestJSON( req );
-
-            console.log( artist, track );
+            _requestJSON( req, callback );
 
         }
 

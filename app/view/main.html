@@ -8,9 +8,9 @@
 
         <!-- ng-show='chapter.id == selectedChapterId' -->
         <div class="list-group">
-            <a href="#" class="list-group-item" ng-repeat="track in spotify.tracks">
+            <a href="{{track.itunes.trackViewUrl}}" target="_blank" class="list-group-item" ng-repeat="track in spotify.tracks">
                 {{track.artists[0].name}} - {{track.name}}
-                <span class="badge">&pound; 0.00</span>
+                <span class="badge">&pound; {{track.itunes.trackPrice}}</span>
             </a>
         <ul>
 

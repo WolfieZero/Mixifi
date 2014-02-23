@@ -27,14 +27,8 @@ routes = function( $routeProvider ) {
             templateUrl: 'view/main.html',
             controller: 'mixifi'
         })
-        .when('/about/', {
+        .when( '/about/', {
             templateUrl: 'view/about.html'
-        })
-        .when( '/itunes/', {
-            templateUrl: 'view/tests.html'
-        })
-        .when( '/spotify/', {
-            templateUrl: 'view/tests.html'
         })
         .otherwise({
             redirectTo: '/'

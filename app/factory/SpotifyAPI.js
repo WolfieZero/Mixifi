@@ -42,7 +42,7 @@ Mixifi.factory('SpotifyAPI', function( $http ){ var
     },
 
 
-    _requestLookupJSON = function( uri ) {
+    _requestLookupJSON = function( uri, callback ) {
 
         var jsonData,
             apiURL = _rootLookupURL + '?uri=' + uri;
@@ -50,9 +50,12 @@ Mixifi.factory('SpotifyAPI', function( $http ){ var
         //CORS support
         //delete $http.defaults.headers.common['X-Requested-With'];
 
-        $http.get(apiURL)
-            .success(function(data) {
+        return $http.get(apiURL)
+            .success(function( data ) {
                 SpotifyAPI.tracks.push( data.track );
+                if( typeof callback === 'function' ) {
+                    callback( data );
+                }
             });
 
     },
@@ -67,7 +70,7 @@ Mixifi.factory('SpotifyAPI', function( $http ){ var
 
         tracks: [],
 
-        getTracks: function( rawData ) {
+        getTracks: function( rawData, callback ) {
 
             var tracks,
                 spotifyData = [];
@@ -79,8 +82,7 @@ Mixifi.factory('SpotifyAPI', function( $http ){ var
 
             angular.forEach(rawData, function(val, key){
                 var uri = _extractURI( val );
-                var obj = _requestLookupJSON( uri );
-                spotifyData.push( obj );
+                _requestLookupJSON( uri, callback );
             });
 
         }
