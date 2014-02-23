@@ -5,9 +5,8 @@
 // ============================================================================
 
 
-Mixifi.factory('iTunesAPI', function( $http ){
+Mixifi.factory('iTunesAPI', function( $http ){ var
 
-    var
 
     /**
      * iTunes API root url
@@ -24,35 +23,37 @@ Mixifi.factory('iTunesAPI', function( $http ){
      * @type  {Object}
      */
     _staticParams = {
-        callback: 'Y',
+        callback: 'JSON_CALLBACK',
         country: 'GB',
         media: 'music',
         entity: 'song',
-        version: '2',
+        version: 2,
+        limit: 1,
         lang: 'en_us'
     },
 
 
+    /**
+     * Takes the request and parses into the API call
+     *
+     * @param   {string}  req  Request for iTunes API
+     *
+     * @return  {null}
+     */
     _requestJSON = function( req ) {
 
         var apiURL = _rootURL + '?' + req;
 
         angular.forEach(_staticParams, function(val, key){
-            apiURL += '&' + val + '=' + key;
+            apiURL += '&' + key + '=' + val;
         });
-
-        console.log(apiURL);
-
 
         $http({
             method: 'JSONP',
             url: apiURL
         })
             .success(function(data, status, headers) {
-                $scope.text = data;
-            })
-            .error(function(data, status, headers) {
-                $scope.text = 'failed';
+                iTunesAPI.tracks.push( data.results[0] );
             });
 
     },
@@ -65,10 +66,14 @@ Mixifi.factory('iTunesAPI', function( $http ){
      */
     iTunesAPI = {
 
+        tracks: [],
+
         artistTrack: function( artist, track ) {
 
             var req = 'term=' + encodeURIComponent( artist + '-' + track );
             _requestJSON( req );
+
+            console.log( artist, track );
 
         }
 
@@ -77,34 +82,3 @@ Mixifi.factory('iTunesAPI', function( $http ){
     return iTunesAPI;
 
 });
-
-
-/**
- * iTunes Interface
- *
- * @param   {object}  $scope  View scope
- * @param   {object}  $http   Handles HTTP requests
- *
- * @return  {null}
- *
-Mixifi.controller('ITunes', function( $scope, $http ) {
-
-    $scope.heading = 'iTunes';
-
-    var apiURL = 'https://itunes.apple.com/search?callback=JSON_CALLBACK&term=the+wonder+years+-+living+room+song&country=GB&media=music&entity=song&version=2&lang=en_us&limit=1';
-
-    $http({
-        method: 'JSONP',
-        url: apiURL
-    })
-        .success(function(data, status, headers) {
-            $scope.text = data;
-        })
-        .error(function(data, status, headers) {
-            $scope.text = 'failed';
-        });
-
-});
-
-
- */

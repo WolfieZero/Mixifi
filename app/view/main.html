@@ -1,8 +1,18 @@
 <div class="row">
     <div class="col-md-6 col-md-offset-3">
 
-        <p><textarea class="form-control" rows="5" placeholder="{{placeholder}}"></textarea></p>
-        <p><button class="btn btn-primary btn-lg btn-block" ng-click="dosomething()">Process</button></p>
+        <p><textarea class="form-control" rows="3" ng-model="spotifytracks" placeholder="{{placeholder}}">{{spotifytracks}}</textarea></p>
+        <p><button class="btn btn-primary btn-lg btn-block" ng-click="process()">Process</button></p>
+
+        <hr>
+
+        <!-- ng-show='chapter.id == selectedChapterId' -->
+        <div class="list-group">
+            <a href="#" class="list-group-item" ng-repeat="track in spotify.tracks">
+                {{track.artists[0].name}} - {{track.name}}
+                <span class="badge">&pound; 0.00</span>
+            </a>
+        <ul>
 
     </div>
 </div>
