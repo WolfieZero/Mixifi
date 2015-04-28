@@ -11,9 +11,16 @@ Developed at #hacksoton 3
 Install
 -------------------------------------------------------------------------------
 
-Requirments
-- [Node.js](nodejs.org)
-- [Gulp](gulpjs.com)
+Initial requirements
+
+- [Node.js](http://nodejs.org/)
+- [Gulp](http://gulpjs.com/)
+- [Bower](http://bower.io/)
+
+Run the following commands:
+
+- `npm install`
+- `bower install`
 
 
 Running
