@@ -1,6 +1,6 @@
 Mixifi.controller('mixifi', function( $http, $scope, SpotifyAPI, iTunesAPI ) {
 
-    $scope.placeholder   = 'Simply drop your playlist in here to get prices on iTunes';
+    $scope.placeholder   = 'Simply drop your playlist or individual trakcs in here to get prices on iTunes';
     $scope.spotifytracks = '';
     $scope.spotify       = SpotifyAPI;
     $scope.itunes        = iTunesAPI;
